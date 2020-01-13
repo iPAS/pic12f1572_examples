@@ -21,3 +21,4 @@ nbproject/Makefile-*
 disassembly/
 *.map
 
+/pic12f1572_ws2812.X/nbproject/private/
