@@ -71,7 +71,13 @@ void main(void)
      * From tutorial:
      * http://stevephillips.me/blog/using-ws2812b-pic-microcontroller
      */
-    ws2812_ptr ws_data[3] = { {255,0,0}, {0,255,0}, {0,0,255} };
+    ws2812_ptr led_data[3] = { {255,0,0}, {0,255,0}, {0,0,255} };
+    ws2812_ptr leds_data[3][2] = 
+    { 
+        { {255,0,0}, {255,0,0} },
+        { {0,255,0}, {0,255,0} },
+        { {0,0,255}, {0,0,255} }
+    };
 
     // FOSC = 8MHz x4-PLL
     // Instruction cycle = 1/FOSC        x 4
@@ -85,7 +91,8 @@ void main(void)
         // Add your application code
         static uint16_t count = 1;
     
-        ws2812_send(&ws_data[count++ % (sizeof(ws_data)/sizeof(ws_data[0]))]);
+//        ws2812_send(&led_data[count++ % (sizeof(led_data)/sizeof(led_data[0]))]);
+        ws2812_send_multiple(&leds_data[count++ % 3][0], 2);
 
         __delay_ms(1000);
         

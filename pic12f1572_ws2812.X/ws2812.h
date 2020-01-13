@@ -8,9 +8,10 @@
 #ifndef WS2812_H
 #define	WS2812_H
 
-// the pin that the LEDs are on. I don't like this being in here
-// but timing is so tight, it is hard to put it elsewhere
+// The pin that the LEDs are on. Please check FOSC compatible with the datasheet.
 #define PIN IO_WS_PORT
+
+#define NUMBER_OF_LEDS 10
 
 typedef struct {
     unsigned char r;
@@ -18,7 +19,8 @@ typedef struct {
     unsigned char b;
 } ws2812_ptr;
 
-// transmit a single WS2812
+// Transmit to WS2812
 void ws2812_send(ws2812_ptr* led);
+void ws2812_send_multiple(ws2812_ptr* leds, uint8_t len);
 
 #endif	/* WS2812_H */
