@@ -13,7 +13,8 @@
 
 #define NUMBER_OF_LEDS 10
 
-typedef struct {
+typedef struct 
+{
     unsigned char r;
     unsigned char g;
     unsigned char b;
@@ -21,6 +22,6 @@ typedef struct {
 
 // Transmit to WS2812
 void ws2812_send(ws2812_ptr* led);
-void ws2812_send_multiple(ws2812_ptr* leds, uint8_t len);
+void ws2812_send_multiple(ws2812_ptr* leds, uint16_t len);
 
 #endif	/* WS2812_H */
